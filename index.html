@@ -1,25 +1,29 @@
 <script type="module">
-  import { bg, show } from "https://js.sabae.cc/egadv.js";
-  
-  onload = async () => {
-      await bg(3904);
-      //await show(csv[30].join(","));
-      await show("サイガイクン by Code for FUKUI");
-      const r = await show("なにと戦う？",
-          ["地震", "火事", "調理中の火事", "学校での地震", "台風", "超強い台風"]
-      );
-      if (r == "地震") {
-          document.location = "earthquake.html";
-      } else if (r == "火事") {
-          document.location = "fire.html";
-      } else if (r == "調理中の火事") {
-          document.location = "cooking-fire.html";
-      } else if (r == "学校での地震") {
-          document.location = "school-eq.html";
-      } else if (r == "台風") {
-          document.location = "typhoon.html";
-      } else if (r == "超強い台風") {
-          document.location = "super-typhoon.html";
-      }
-  }
-  </script>
+import {bg, show} from "https://js.sabae.cc/egadv.js";
+
+await bg();
+await show("クマが現れた。");
+    
+let act = await show("どうする？", ["たたかう", "にげる"]);
+
+if (act === "たたかう") {
+    let fight = await show("どうする？", ["投げる", "大声を出す"]);
+     
+    if (fight === "投げる") {
+        await show("吹っ飛ばされた！");
+    } else {
+        await show("クマは激怒した！");
+    }
+} else {
+    let esc = await show("どうする？", ["死んだふりをする", "全力でにげる", "慎重に後ずさりする"]);
+     
+    if (esc === "死んだふりをする") {
+        await show("餌として土に埋められた！");
+    } else if (esc === "全力でにげる") {
+        await show("追いつかれて食べられた！");
+    } else {
+        await show("うまく逃げ切れた！");
+    }
+}
+
+</script>
